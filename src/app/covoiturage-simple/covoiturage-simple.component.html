@@ -1,0 +1,40 @@
+
+<h2>Covoiturage Simple</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <ul class="heroes">
+                <li *ngFor="let announce of announces"
+                    [class.selected]="announce === selectedAnnounce">
+                    <span class="badge">{{announce.id}}</span> {{announce.authorname}}
+                </li>
+            </ul>
+        </div>
+        <div class="col-xl">
+            <input type="text" #search (input)="onInput(search.value)" placeholder="Author Name"/>
+            <table class="table" style="float:right">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Author Name</th>
+                    <th scope="col">Number of Seats</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Contrepartie</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let announce of announces$ | async">
+                    <th scope="row">{{announce.id}}</th>
+                    <th scope="row">{{announce.authorname}}</th>
+                    <th scope="row">{{announce.numberofseats}}</th>
+                    <th scope="row">{{announce.creationdate}}</th>
+                    <th scope="row">{{announce.message}}</th>
+                    <th scope="row">{{announce.contrepartietype}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
